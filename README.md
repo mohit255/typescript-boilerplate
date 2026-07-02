@@ -1,4 +1,4 @@
-# client-bids-wallet-pollar-consumer
+# typescript-boilerplate
 
 SQS polling consumer for bids and wallet events. Proxies bid operations to the Binara service and persists data to Aurora DSQL via TypeORM.
 
