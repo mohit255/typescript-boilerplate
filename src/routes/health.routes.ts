@@ -1,5 +1,5 @@
 // src/routes/health.routes.ts
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response } from "express";
 
 class HealthRoutes {
   public router: Router;
@@ -31,12 +31,12 @@ class HealthRoutes {
      *                   type: string
      *                   example: "2025-06-02T12:00:00Z"
      */
-    this.router.get('/', this.healthCheck);
+    this.router.get("/", this.healthCheck);
   }
 
   private healthCheck(req: Request, res: Response): void {
     res.status(200).json({
-      status: 'ok',
+      status: "ok",
       timestamp: new Date().toISOString(),
     });
   }

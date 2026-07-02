@@ -1,9 +1,10 @@
-import { Server } from './core/server';
+import "dotenv/config";
+import { Server } from "./core/server";
 
 const server = new Server({
   port: 4000, // override default
   enableLogs: true,
-  secretId: 'qa/sb-backoffice',
+  secretId: "qa/sb-backoffice",
 });
 
 server.bootstrap();

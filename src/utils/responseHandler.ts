@@ -14,7 +14,12 @@ export class ResponseHandler {
    * @param message Optional success message
    * @param statusCode HTTP status code (default: 200)
    */
-  public static success<T>(res: any, data: T, message = 'Request successful', statusCode = 200) {
+  public static success<T>(
+    res: any,
+    data: T,
+    message = "Request successful",
+    statusCode = 200,
+  ) {
     const response: ApiResponse<T> = {
       success: true,
       message,
@@ -33,7 +38,7 @@ export class ResponseHandler {
    */
   public static error(
     res: any,
-    message = 'Something went wrong',
+    message = "Something went wrong",
     error: any = null,
     statusCode = 500,
   ) {

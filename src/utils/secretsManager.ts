@@ -1,10 +1,14 @@
 // src/utils/secretService.ts
-import { SecretsManagerClient, GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
+import {
+  SecretsManagerClient,
+  GetSecretValueCommand,
+} from "@aws-sdk/client-secrets-manager";
+import config from "../config/index";
 
 export class SecretService {
   private client: SecretsManagerClient;
 
-  constructor(region: string = process.env.AWS_REGION || 'ap-south-1') {
+  constructor(region: string = config.aws.region as string) {
     this.client = new SecretsManagerClient({ region });
   }
 
@@ -22,10 +26,10 @@ export class SecretService {
         return JSON.parse(data.SecretString);
       } else if (data.SecretBinary) {
         const buff = Buffer.from(data.SecretBinary as Uint8Array);
-        return JSON.parse(buff.toString('utf-8'));
+        return JSON.parse(buff.toString("utf-8"));
       }
 
-      throw new Error('Secret data format is invalid.');
+      throw new Error("Secret data format is invalid.");
     } catch (error) {
       console.error(`❌ Failed to retrieve secret: ${secretName}`, error);
       throw error;

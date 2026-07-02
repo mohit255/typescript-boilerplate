@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 /**
  * Middleware class for i18n setup
@@ -11,7 +11,11 @@ export class I18nMiddleware {
    * @param res Express response
    * @param next Express next function
    */
-  static attachTranslator(req: Request, res: Response, next: NextFunction): void {
+  static attachTranslator(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): void {
     // Prefer `req.t` (from i18n API alias), fallback to `req.__`
     res.locals.t = req.t || req.__ || ((msg: string) => msg);
     next();
